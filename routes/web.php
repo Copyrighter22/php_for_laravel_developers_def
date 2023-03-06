@@ -1,33 +1,25 @@
 <?php
 
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $task1 = new stdClass();
-    $task1->id = 1;
-    $task1->title = "Task 1";
-    $task1->description = "Patata";
-    $task1->completed = 1;
-    $task2 = new stdClass();
-    $task2->id = 2;
-    $task2->title = "Task 2";
-    $task2->description = "Tomata";
-    $task2->completed = 1;
-
-    $tasks = [
-      $task1,
-      $task2
-    ];
-    return view('tasks');
-    'tasks' => $tasks
+    return view('tasks',[
+        'tasks' => Task::all()
+        ]);
 });
 
 Route::get('/tasks', function () {
-    return view('tasks');
+    return view('tasks',[
+        'tasks' => Task::all()
+    ]);
 });
 
 Route::get('/users', function () {
-    return view('users');
+    return view('users',[
+        'users' => User::all()
+    ]);
 });
 
 Route::get('/contact', function () {
